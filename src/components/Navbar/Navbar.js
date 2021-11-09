@@ -1,5 +1,5 @@
 import React from 'react'
-import "./NavBar.css"
+import "./Navbar.css"
 import {MenuList} from "./MenuList"
 import { NavLink } from 'react-router-dom'
 import logoImage from './fiesta.png'

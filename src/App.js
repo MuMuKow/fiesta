@@ -6,13 +6,13 @@ import Home from './components/pages/Home'
 import Help from './components/pages/Help'
 import List from './components/pages/List'
 import Login_Register from './components/pages/Login_Register'
-import NavBar from './components/Navbar/NavBar'
+import Navbar from './components/Navbar/Navbar'
 
 function App() {
   return (
     <div className="container">
       <Router>
-        <NavBar />
+        <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/help" component={Help} />
