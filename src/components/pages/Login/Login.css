@@ -1,7 +1,8 @@
 .card-login{
     background-color: #5bc0de;
     box-shadow: 0 0 10px 5px gray;
-    border-radius:5px;
+    border-radius:15px;
+    width: 500px;
     display:flex;
     transition:inherit;
     margin: 4rem 0;
