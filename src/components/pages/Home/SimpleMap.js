@@ -22,12 +22,17 @@ function SimpleMap (props){
     lng={pin.long}
     eventNum={props.eventNum}
     setEventNum={props.setEventNum}
+    party={pin.party}
+    img={pin.img}
+    rating={pin.rating}
+    more={pin.more}
+    user={pin.user}
   />)
   
   return (
     <div className="map-general">
       <GoogleMapReact
-        bootstrapURLKeys={{ key:"AIzaSyDOQ7paZFBDSnK0stDffkN8VdYeFwnzq3U"}}
+        bootstrapURLKeys={{ key:process.env.REACT_APP_MAP_API_KEY}}
         defaultCenter={InitialPos.center}
         defaultZoom={InitialPos.zoom}
       >
