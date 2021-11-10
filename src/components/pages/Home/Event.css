@@ -14,10 +14,13 @@
 }
 
 .pop-card-inner {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     right:0;
     position: relative;
     padding: 32px;
     width: 100%;
+    height:40%;
     max-width: 640px;
     background-color: white;
     z-index: 5;
@@ -30,4 +33,39 @@
     right: 16px;
     z-index: 5;
 
+}
+
+.pop-card-img{
+    height:40%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.pop-card-rating{
+    color:rgb(0, 72, 226);
+    font-size:1.4rem;
+    margin-top:0.6rem;  
+}
+.pop-card-rating::before{
+    content:"Rating: ";
+    position:relative;
+    color:rgb(0, 0, 0);
+}
+.pop-card-rating::after{
+    content:"/5";
+    position:relative;
+    color:rgb(0, 0, 0);
+    padding-left: 0.2rem;
+}
+
+.pop-card-user{
+    color:rgb(9, 255, 0);
+    font-size:1rem;
+    margin-top:1.5rem;  
+}
+
+.pop-card-user::before{
+    content:"Posted by user ";
+    position:relative;
+    color:rgb(0, 0, 0);
 }

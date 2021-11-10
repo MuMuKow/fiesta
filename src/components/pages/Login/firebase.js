@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 // setting up connection to firebase 
 const firebaseConfig = {
-    apiKey: {key:process.env.REACT_APP_FIREBASE_API_KEY},
+    apiKey: "AIzaSyCm2IHiJC720jFK2MVVtvNoLL4nmyA79rs",
     authDomain: "fiesta-f21-project.firebaseapp.com",
     projectId: "fiesta-f21-project",
     storageBucket: "fiesta-f21-project.appspot.com",
