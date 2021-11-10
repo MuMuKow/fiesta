@@ -4,21 +4,36 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import './Login.css'
 
+// for the backend + to add the 
+import {signup} from './firebase';
+import { useRef, useState } from "react";
+import { getAuth } from "firebase/auth";
+
+
+let emailRef;
+let passwordRef;
+
+
+// add user
+async function handleSignup() {
+    try {
+     await signup(emailRef.current.value,passwordRef.current.value);
+    } catch {
+     alert("Error!");
+    }
+ }
+ 
 function Register() {
+
+    emailRef = useRef();
+    passwordRef = useRef();
     return (
         <div >
             <Stack>
                 <div>
+                    <form>
                     <TextField
-                        fullWidth
-                        required
-                        id="reg-name"
-                        label="Name"
-                        variant="filled"
-                        margin="dense"
-                        helperText="Please enter your name"
-                    />
-                    <TextField
+                        inputRef={emailRef}
                         fullWidth
                         required
                         id="reg-email"
@@ -28,6 +43,7 @@ function Register() {
                         helperText="Please enter your email address"
                     />
                     <TextField
+                        inputRef={passwordRef}
                         fullWidth
                         required
                         id="reg-pass"
@@ -36,22 +52,13 @@ function Register() {
                         type="password"
                         margin="normal"
                     />
-                    <TextField
-                        fullWidth
-                        required
-                        id="reg-pass-again"
-                        label="Confirm Password"
-                        variant="filled"
-                        type="password"
-                        margin="normal"
-                    />
+                    <Button onClick={handleSignup} variant="contained" sx={{margin: "2vh"}}>Register</Button>
+                    </form>
                 </div>
             </Stack>
-            <div>
-                <Button variant="contained" sx={{margin: "2vh"}}>Register</Button>
-            </div>
+      
         </div>
     )
 }
-
+export const auth = getAuth()
 export default Register

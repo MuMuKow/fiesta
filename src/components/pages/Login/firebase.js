@@ -1,0 +1,20 @@
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+
+// setting up connection to firebase 
+const firebaseConfig = {
+    apiKey: "AIzaSyCm2IHiJC720jFK2MVVtvNoLL4nmyA79rs",
+    authDomain: "fiesta-f21-project.firebaseapp.com",
+    projectId: "fiesta-f21-project",
+    storageBucket: "fiesta-f21-project.appspot.com",
+    messagingSenderId: "841381762835",
+    appId: "1:841381762835:web:fbbb5a9dff7ce342d16ce6"
+  };
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+
+export function signup(email, password) {
+    createUserWithEmailAndPassword(auth, email, password)
+}
