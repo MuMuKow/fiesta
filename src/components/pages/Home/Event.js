@@ -4,10 +4,10 @@ import "./Event.css"
 
 function Event(props) {
     return (props.eventButton) ? (
-        <div className="event-card">
-            <div className="event-card-inner">
+        <div className="pop-card">
+            <div className="pop-card-inner">
                 <h1>HELLO</h1>
-                <button className="close-btn">
+                <button className="close-btn" onClick={() => props.setEventButton(false)}>
                     Close
                 </button>
                 {props.children}

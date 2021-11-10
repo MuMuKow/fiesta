@@ -17,7 +17,8 @@ function EventCard(props) {
                     {props.more}
                 </p>
                 <h3 className="event-card-rating">{props.rating}</h3>
-                <button className="event-card-btn">More</button>
+                <button className="event-card-btn"
+                onClick={() => props.setEventButton(true)}>More</button>
             </div>
         </div>
     )
