@@ -1,5 +1,6 @@
 import React from 'react'
 import './SideBar.css'
+import "./Event.js"
 
 function Card(props) {
     const hover = (props.eventNum === props.alt)
@@ -17,7 +18,12 @@ function Card(props) {
                     {props.more}
                 </p>
                 <h3 className="card-rating">{props.rating}</h3>
-                <button className="card-btn">More</button>
+                <button 
+                    className="card-btn" 
+                    onClick={() => props.setEventButton(true)}
+                >
+                    More
+                </button>
             </div>
         </div>
     )
