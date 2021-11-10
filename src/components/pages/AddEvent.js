@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Help() {
+function AddEvent() {
     return (
         <div>
-            Help
+            Add event
         </div>
     )
 }
 
-export default Help
+export default AddEvent
