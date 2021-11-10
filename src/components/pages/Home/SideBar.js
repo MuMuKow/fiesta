@@ -13,6 +13,10 @@ function SideBar(props) {
         user={card.user}
         eventNum={props.eventNum}
         setEventNum={props.setEventNum}
+        setChosenEvent={props.setChosenEvent} 
+        chosenEvent ={props.chosenEvent}
+        eventButton={props.eventButton}
+        setEventButton={props.setEventButton}
     />)
     return (
         <div className="event-card-list">
