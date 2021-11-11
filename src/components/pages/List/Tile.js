@@ -1,18 +1,20 @@
 import React from 'react'
+import './Tile.css'
 
 function Tile(props) {
     return (
-        <div>
+        <div className="one-tile">
             <img alt={props.alt} 
                 src={props.img} 
                 className="tile-img"
             />
             <div className="tile-body">
-                <h2 className="tile-title">{props.party}</h2>
+                <h1 className="tile-title">{props.party}</h1>
                 <p className="tile-description">
                     {props.more}
                 </p>
-                <h3 className="tile-rating">{props.rating}</h3>
+                <h2 className="tile-rating">{props.rating}</h2>
+                <h3 className="tile-user">{props.user}</h3>
             </div>
         </div>
     )

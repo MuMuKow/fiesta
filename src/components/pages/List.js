@@ -1,6 +1,7 @@
 import React from 'react'
 import Tile from "./List/Tile"
 import pinData from '../../pinData'
+import './List/Tile.css'
 
 function List() {
         const tileList = pinData.map(tile => <Tile
