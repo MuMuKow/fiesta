@@ -1,5 +1,9 @@
 import React from 'react'
 import './Tile.css'
+import Stack from '@mui/material/Stack';
+import UpIcon from '@mui/icons-material/KeyboardArrowUp';
+import DownIcon from '@mui/icons-material/KeyboardArrowDown';
+import IconButton from '@mui/material/IconButton';
 
 function Tile(props) {
     return (
@@ -13,9 +17,17 @@ function Tile(props) {
                 <p className="tile-description">
                     {props.more}
                 </p>
-                <h2 className="tile-rating">{props.rating}</h2>
                 <h3 className="tile-user">{props.user}</h3>
             </div>
+            <Stack sx={{justifyContent:"center",alignItems:"center",width:"30%"}} spacing={2}>
+                    <IconButton>
+                        <UpIcon sx={{color:"green",fontSize: 40}}/>
+                    </IconButton>
+                    <h2 className="tile-rating">{props.rating}</h2>
+                    <IconButton>
+                        <DownIcon sx={{color:"red",fontSize: 40}}/>
+                    </IconButton>
+            </Stack>
         </div>
     )
 }

@@ -24,6 +24,7 @@
 .tile-body{
     font-size: larger;
     margin-left: 10px;
+    width:70%;
 }
 
 .tile-title{
@@ -35,12 +36,8 @@
 
 .tile-rating{
     color:rgb(0, 72, 226);
-    margin-top:0.6rem;  
-}
-.tile-rating::before{
-    content:"Upvotes: ";
-    position:relative;
-    color:rgb(0, 0, 0);
+    margin-top:0.6rem;
+    text-align: center;
 }
 
 .tile-user{

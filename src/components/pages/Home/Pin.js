@@ -6,7 +6,7 @@ function Pin(props) {
     const hover = (props.eventNum === props.alt)
     return (
         <div onMouseOver={() => props.setEventNum(props.alt)}
-            onMouseLeave={() => props.setEventNum(0)}>
+            onMouseLeave={() => props.setEventNum(-1)}>
             <img alt={props.alt} 
                 lat={props.late} 
                 lng={props.long}

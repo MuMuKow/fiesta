@@ -5,7 +5,7 @@ function EventCard(props) {
     const hover = (props.eventNum === props.alt)
     return(
         <div onMouseOver={() => props.setEventNum(props.alt)}
-            onMouseLeave={() => props.setEventNum(0)}
+            onMouseLeave={() => props.setEventNum(-1)}
             className={(hover)?"cardActive":"event-card"}>
             <img alt={props.alt} 
                 src={props.img} 
