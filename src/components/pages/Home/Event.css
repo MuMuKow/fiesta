@@ -47,15 +47,9 @@
     margin-top:0.6rem;  
 }
 .pop-card-rating::before{
-    content:"Rating: ";
+    content:"Upvotes: ";
     position:relative;
     color:rgb(0, 0, 0);
-}
-.pop-card-rating::after{
-    content:"/5";
-    position:relative;
-    color:rgb(0, 0, 0);
-    padding-left: 0.2rem;
 }
 
 .pop-card-user{

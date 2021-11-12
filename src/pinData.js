@@ -1,3 +1,5 @@
+import SortData from './SortData'
+
 const pinData = [
     {
         id:1,
@@ -5,7 +7,7 @@ const pinData = [
         long:-119.85753197936104,
         party:"Summer Party1Summer Party1",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:71,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM, With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -15,7 +17,7 @@ const pinData = [
         long:-119.8542252392064,
         party:"Summer Party2",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:78,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -25,7 +27,7 @@ const pinData = [
         long:-119.86599027281127,
         party:"Summer Party3",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:23,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -35,7 +37,7 @@ const pinData = [
         long:-119.8645631532996,
         party:"Summer Party4",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:85,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -45,7 +47,7 @@ const pinData = [
         long:-119.85394948177901,
         party:"Summer Party5",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:52,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -55,7 +57,7 @@ const pinData = [
         long:-119.85485448434765,
         party:"Summer Party6",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:7,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -65,7 +67,7 @@ const pinData = [
         long:-119.86228594783223,
         party:"Summer Party7",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:66,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -85,7 +87,7 @@ const pinData = [
         long:-119.86609740100869,
         party:"Summer Party9",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:92,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -95,7 +97,7 @@ const pinData = [
         long:-119.85946651680388,
         party:"Summer Party10",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:70,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -105,7 +107,7 @@ const pinData = [
         long:-119.86118950246338,
         party:"Summer Party11",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:94,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -115,7 +117,7 @@ const pinData = [
         long:-119.85626419996125,
         party:"Summer Party12",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:55,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -125,7 +127,7 @@ const pinData = [
         long:-119.85527217791487,
         party:"Summer Party13",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:25,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -135,7 +137,7 @@ const pinData = [
         long:-119.85502852337717,
         party:"Summer Party14",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:81,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
@@ -145,9 +147,9 @@ const pinData = [
         long:-119.85936209336927,
         party:"Summer Party15",
         img:"https://d1csarkz8obe9u.cloudfront.net/posterpreviews/summer-party-video-ad-template-design-024d0ddcdf0746f9fa1e87773c385103_screen.jpg?ts=1567082239",
-        rating:5,
+        rating:12,
         more:"With Ken Adams; Food and Drinks; $10 per entry; July 31 9AM",
         user:"Gen Tamada"
     },
 ]
-export default pinData
+export default SortData(pinData)

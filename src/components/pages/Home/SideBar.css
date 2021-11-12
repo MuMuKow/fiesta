@@ -66,15 +66,9 @@
     margin-top:0.6rem;  
 }
 .event-card-rating::before{
-    content:"Rating: ";
+    content:"Upvotes: ";
     position:relative;
     color:rgb(0, 0, 0);
-}
-.event-card-rating::after{
-    content:"/5";
-    position:relative;
-    color:rgb(0, 0, 0);
-    padding-left: 0.2rem;
 }
 
 .event-card-btn{
@@ -142,15 +136,9 @@
     margin-top:16px;  
 }
 .pop-rating::before{
-    content:"Rating: ";
+    content:"Upvotes: ";
     position:relative;
     color:rgb(255, 255, 255);
-}
-.pop-rating::after{
-    content:"/5";
-    position:relative;
-    color:rgb(255, 255, 255);
-    padding-left: 0.2rem;
 }
 
 @media screen and (max-width:1000px){

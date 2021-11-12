@@ -16,7 +16,9 @@ function NavBar() {
     })
     return (
         <nav>
-            <img src={logoImage} alt="logo" className="logo"/>
+            <NavLink exact to="/">
+                <img src={logoImage} alt="logo" className="logo"/>
+            </NavLink>
             <ul className="menu-list">{menuList}</ul>
         </nav>
     )

@@ -33,6 +33,15 @@ function Register() {
                 <div>
                     <form>
                     <TextField
+                        fullWidth
+                        required
+                        id="reg-name"
+                        label="Username"
+                        variant="filled"
+                        margin="dense"
+                        helperText="Please enter your username"
+                    />
+                    <TextField
                         inputRef={emailRef}
                         fullWidth
                         required
@@ -48,6 +57,15 @@ function Register() {
                         required
                         id="reg-pass"
                         label="Password"
+                        variant="filled"
+                        type="password"
+                        margin="normal"
+                    />
+                    <TextField
+                        fullWidth
+                        required
+                        id="reg-pass-again"
+                        label="Confirm Password"
                         variant="filled"
                         type="password"
                         margin="normal"

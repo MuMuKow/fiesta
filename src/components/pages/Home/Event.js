@@ -1,7 +1,6 @@
 import React from "react"
 import "./SideBar.js"
 import "./Event.css"
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
 function Event(props) {

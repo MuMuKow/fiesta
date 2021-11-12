@@ -1,0 +1,32 @@
+.all-stacks{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5bc0de;
+    box-shadow: 0 0 10px 5px gray;
+    border-radius:10px;
+    transition:inherit;
+    margin: 4rem 0;
+}
+
+.all-stacks h1{
+    margin: 1vh;
+}
+
+.image-stack{
+    align-items: center;
+    justify-content: center;
+    width:25%;
+}
+.add-image{
+    width:100%;
+    height:50vh;
+    background-color: lightgray;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-image-tab{
+    width:100%;
+}
