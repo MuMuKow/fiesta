@@ -4,7 +4,7 @@ import "./Event.css"
 import Button from '@mui/material/Button';
 
 function Event(props) {
-    const chosen = props.item[props.chosenEvent-1]
+    const chosen = props.item[props.chosenEvent]
     return (props.eventButton) ? (
         <div className="pop-card">
             <img alt={chosen.alt} 

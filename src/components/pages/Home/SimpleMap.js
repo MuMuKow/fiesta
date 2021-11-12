@@ -15,9 +15,9 @@ function SimpleMap (props){
     zoom: 16
   };
 
-  const pindata = props.item.map(pin => <Pin 
+  const pindata = props.item.map((pin,index) => <Pin 
     key={pin.id}
-    alt={pin.id}
+    alt={index}
     lat={pin.late} 
     lng={pin.long}
     eventNum={props.eventNum}
