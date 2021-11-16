@@ -7,8 +7,8 @@ import Event from './Home/Event'
 import pinData from '../../pinData'
 
 function Home() {
-    const [eventNum,setEventNum] = useState(0)
-    const [chosenEvent,setChosenEvent] = useState(0)
+    const [eventNum,setEventNum] = useState(-1)
+    const [chosenEvent,setChosenEvent] = useState(-1)
     const [eventButton,setEventButton] = useState(false)
     return (
         <div>
