@@ -6,7 +6,7 @@ import './Login.css'
 
 // for the backend + to add the 
 import {signup} from './firebase';
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { getAuth } from "firebase/auth";
 
 
