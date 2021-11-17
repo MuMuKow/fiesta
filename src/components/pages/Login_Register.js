@@ -10,10 +10,10 @@ function Login_Register() {
     const [pressed,setPress] = useState(true)
     return (
         <Stack
-        sx={{width: '100%',}}
+        sx={{width: '80%',}}
         alignItems="center"
         className="card-login">
-            <h1 style={{color: "#000", textAlign: "center", fontSize: "50px"}}>Welcome to Fiesta</h1>
+            <h1 style={{color: "#000", textAlign: "center", fontSize: "45px"}}>Welcome to Fiesta</h1>
             <Tabs>
                 <Tab
                     onClick={() => setPress(true)} 

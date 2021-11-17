@@ -1,10 +1,11 @@
 .card-login{
     background-color: #5bc0de;
-    box-shadow: 0 0 10px 5px gray;
+    box-shadow: 0 0 10px 0 rgb(138, 135, 135);
     border-radius:10px;
     display:flex;
     transition:inherit;
-    margin: 4rem 0;
+    margin: 4rem 10%;
+    padding: 10px;
     align-items: center;
     justify-content: center;
 }
