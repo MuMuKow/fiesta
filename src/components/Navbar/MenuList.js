@@ -8,7 +8,7 @@ export const MenuList = [
         url: "/list"
     },
     {
-        title:"Add Event",
+        title:"Add",
         url: "/add"
     },
     {

@@ -12,7 +12,7 @@ function SimpleMap (props){
       lat: 34.413,
       lng: -119.859
     },
-    zoom: 15.5
+    zoom: 15.3
   };
 
   const pindata = props.item.map((pin,index) => <Pin 
