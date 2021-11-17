@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Geocode from "react-geocode"
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -11,8 +12,13 @@ import './AddEvent/AddEvent.css'
 import UploadImg from './AddEvent/UploadImg'
 import UrlField from './AddEvent/UrlField'
 
+
 function AddEvent() {
+    Geocode.setApiKey(process.env.REACT_APP_MAP_API_KEY)
     const [switchTab,setTab] = useState(true)
+    
+    const [address,setAddress] = useState("")
+    const [location,setLocation] = useState({lat:0,lng:0})
 
 
     const onChange = (e) => {       //copied code from https://codesandbox.io/s/wonderful-pine-i7fs3?file=/src/Demo.tsx:439-784
@@ -77,6 +83,7 @@ function AddEvent() {
                     label="Address"
                     margin="normal"
                     helperText="The address where the party will take place"
+                    onChange={event=>setAddress(event.target.value)}
                 />
                 <TextField
                     id="party-desc"
@@ -86,9 +93,25 @@ function AddEvent() {
                     margin="normal"
                     helperText="Time, Date, Theme, Fee, etc."
                 />
-                <Button variant="contained" component="span" sx={{margin: "2vh",fontSize:"larger"}}>
+                <Button 
+                    variant="contained" 
+                    component="span" 
+                    sx={{margin: "2vh",fontSize:"larger"}}
+                    onClick={()=>Geocode.fromAddress(address).then(
+                        (response) => {
+                            const { lat, lng } = response.results[0].geometry.location;
+                            setLocation({lat,lng})
+                        },
+                        (error) => {
+                            alert(error);
+                        }
+                    )
+                    }
+                >
                     Submit
                 </Button>
+                <p>{"Latitude: " + location.lat}</p>
+                <p>{"Longitude: " + location.lng}</p>
             </Stack>
         </div>
     )
