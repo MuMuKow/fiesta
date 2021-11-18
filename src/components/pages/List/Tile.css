@@ -66,4 +66,7 @@
     .tile-body{
         font-size: smaller;
     }
+    .one-tile{
+        width:90%;
+    }
 }

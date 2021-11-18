@@ -30,3 +30,12 @@
 .add-image-tab{
     width:100%;
 }
+
+@media screen and (max-width:600px){
+    .all-stacks{
+        flex-direction: column;
+    }
+    .image-stack{
+        width:90%;
+    }
+}
