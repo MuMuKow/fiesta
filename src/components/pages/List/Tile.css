@@ -41,12 +41,12 @@
 }
 
 .tile-user{
-    color:rgb(9, 255, 0);
+    color:rgb(54, 77, 206);
     margin-top:1.5rem;  
 }
 
 .tile-user::before{
-    content:"Posted by user ";
+    content:"Posted by: ";
     position:relative;
     color:rgb(0, 0, 0);
 }

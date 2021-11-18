@@ -59,7 +59,7 @@
 }
 
 .pop-card-user::before{
-    content:"Posted by user ";
+    content:"Posted by: ";
     position:relative;
     color:rgb(0, 0, 0);
 }
