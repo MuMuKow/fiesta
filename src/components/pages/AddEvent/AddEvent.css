@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #5bc0de;
+    background-color: rgb(139, 158, 243);
     box-shadow: 0 0 10px 5px gray;
     border-radius:10px;
     transition:inherit;
