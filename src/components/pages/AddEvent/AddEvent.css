@@ -1,5 +1,5 @@
 .all-stacks{
-    width:100%;
+    width:80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,7 +7,7 @@
     box-shadow: 0 0 10px 5px gray;
     border-radius:10px;
     transition:inherit;
-    margin: 4rem 0;
+    margin: 4rem 10%;
 }
 
 .all-stacks h1{

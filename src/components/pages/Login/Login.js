@@ -4,10 +4,9 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import './Login.css'
 import { useEffect, useState } from "react";
-import { useAuth } from "./firebase";
+import { useRef } from "react";
 
-
-import {signup, login, logout} from './firebase';
+import {useAuth, login, logout} from './firebase';
 
 let emailRef;
 let passwordRef;
@@ -32,6 +31,8 @@ async function handleLogin() {
 
 function Login() {
     const currentUser = useAuth();
+    emailRef = useRef();
+    passwordRef = useRef();
     return (
         <div >
             <Stack>
