@@ -1,3 +1,4 @@
+/*
 import SortData from './SortData'
 
 const pinData = [
@@ -153,3 +154,5 @@ const pinData = [
     },
 ]
 export default SortData(pinData)
+
+*/

@@ -5,8 +5,6 @@ import './SimpleMap.css'
 
 import Pin from './Pin'
 
-require('dotenv').config()
-
 function SimpleMap (props){
 
   const InitialPos = {
@@ -34,7 +32,7 @@ function SimpleMap (props){
   return (
     <div className="map-general">
       <GoogleMapReact
-        bootstrapURLKeys={{ key:process.env.MAP_API_KEY}}
+        bootstrapURLKeys={{ key:"AIzaSyDOQ7paZFBDSnK0stDffkN8VdYeFwnzq3U"}}
         defaultCenter={InitialPos.center}
         defaultZoom={InitialPos.zoom}
       >

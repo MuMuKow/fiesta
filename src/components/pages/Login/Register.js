@@ -12,13 +12,17 @@ import { getAuth } from "firebase/auth";
 
 let emailRef;
 let passwordRef;
+let usernameRef;
 
 
 // add user
 async function handleSignup() {
     try {
-     await signup(emailRef.current.value,passwordRef.current.value);
-    } catch {
+     await signup(
+        emailRef.current.value,
+        passwordRef.current.value,
+        usernameRef.current.value
+    );} catch {
      alert("Error!");
     }
  }
@@ -27,12 +31,14 @@ function Register() {
 
     emailRef = useRef();
     passwordRef = useRef();
+    usernameRef = useRef();
     return (
         <div >
             <Stack>
                 <div>
                     <form>
                     <TextField
+                        inputRef={usernameRef}
                         fullWidth
                         required
                         id="reg-name"

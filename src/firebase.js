@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile} from "firebase/auth";
 import { useEffect, useState } from "react";
 import {getFirestore} from '@firebase/firestore' 
+import { formatMuiErrorMessage } from "@mui/utils";
 
-require('dotenv').config()
 // setting up connection to firebase 
 const firebaseConfig = {
-  apiKey: process.env.FIRE_BASE_API_KEY,
+  apiKey: "AIzaSyBRuwmozb0cfWencWUOYu3yGlK5suHHolU",
   authDomain: "fiesta-5caa1.firebaseapp.com",
   projectId: "fiesta-5caa1",
   storageBucket: "fiesta-5caa1.appspot.com",
@@ -14,7 +14,6 @@ const firebaseConfig = {
   appId: "1:973278845752:web:be6bb9ab244cc4aee53fcd",
   measurementId: "G-ML07VRLW7T"
 };
-console.log(process.env.FIRE_BASE_API_KEY)
 
 const app = initializeApp(firebaseConfig);
 
@@ -22,8 +21,19 @@ export const db = getFirestore(app);
 
 const auth = getAuth();
 
-export function signup(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password)
+export const getCurrentUser = auth.currentUser;
+
+export function signup(email, password, username) {
+  return createUserWithEmailAndPassword(auth, email, password).then(
+    () => {
+      updateProfile(getCurrentUser, {
+        displayName: username
+      }).catch((error) => {
+        alert(error)
+      });
+    }).catch((error) => {
+      alert(error)
+    });
 }
 
 export function login(email, password) {

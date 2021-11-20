@@ -17,11 +17,13 @@
 .image-stack{
     align-items: center;
     justify-content: center;
-    width:25%;
+    width:90%;
+    margin-left: 1rem;
 }
 .add-image{
     width:100%;
     height:50vh;
+    margin-top: 1rem;
     background-color: lightgray;
     align-items: center;
     justify-content: center;
@@ -31,11 +33,12 @@
     width:100%;
 }
 
-@media screen and (max-width:600px){
+@media screen and (max-width:800px){
     .all-stacks{
         flex-direction: column;
     }
     .image-stack{
         width:90%;
+        margin-left: 0;
     }
 }

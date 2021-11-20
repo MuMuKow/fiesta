@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 
 function UploadImg(props){
     return(
-        <Stack >
+        <Stack sx={{flexDirection:"row"}}>
             <TextField
                 fullWidth
                 required
@@ -13,7 +13,6 @@ function UploadImg(props){
                 label="Image URL"
                 variant="filled"
                 margin="dense"
-                helperText="Please enter your poster image URL"
                 onChange={event=>props.setTempURL(event.target.value)}
             />
             <Button variant="outlined" onClick={()=>props.setURL(props.imgURLTemp)} sx={{margin: "2vh",color:"white"}}>
