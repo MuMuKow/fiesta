@@ -5,7 +5,7 @@ import EventCard from './EventCard'
 function SideBar(props) {
     const cardList = props.item.map((card,index) => <EventCard
         alt={index}
-        key={card.id}
+        key={card.index}
         party={card.party}
         img={card.img}
         rating={card.rating}

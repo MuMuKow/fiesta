@@ -6,7 +6,7 @@ import './Login.css'
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 
-import {useAuth, login, logout} from './firebase';
+import {useAuth, login, logout} from '../../../firebase';
 
 let emailRef;
 let passwordRef;
@@ -14,20 +14,20 @@ let passwordRef;
 
 // add user
 async function handleLogin() {
-     try {
+    try {
         await login(emailRef.current.value,passwordRef.current.value);
-     } catch {
-      alert("Error!");
-     }
-  }
+    } catch {
+        alert("Error!");
+    }
+}
 
   async function handleLogout() {
     try {
-      await logout();
+        await logout();
     } catch {
-      alert("Error!");
+        alert("Error!");
     }
-  }
+}
 
 function Login() {
     const currentUser = useAuth();

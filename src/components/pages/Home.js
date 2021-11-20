@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { getDatabase, ref, onValue} from 'firebase/database'
 
 import SimpleMap from './Home/SimpleMap'
 import SideBar from './Home/SideBar'
@@ -10,6 +11,9 @@ function Home() {
     const [eventNum,setEventNum] = useState(-1)
     const [chosenEvent,setChosenEvent] = useState(-1)
     const [eventButton,setEventButton] = useState(false)
+
+    const db = getDatabase();
+
     return (
         <div>
             <Event 
