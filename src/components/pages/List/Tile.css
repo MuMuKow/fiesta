@@ -27,11 +27,15 @@
     width:70%;
 }
 
-.tile-title{
-
+.tile-date{
+    color:goldenrod;
+    font-weight: bold;
+    font-size:smaller;
 }
 
 .tile-description{
+    margin-top: 1rem;
+    word-wrap:break-word;
 }
 
 .tile-rating{
@@ -46,7 +50,7 @@
 }
 
 .tile-user::before{
-    content:"Posted by: ";
+    content:"Hosted by: ";
     position:relative;
     color:rgb(0, 0, 0);
 }

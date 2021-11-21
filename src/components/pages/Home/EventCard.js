@@ -13,8 +13,8 @@ function EventCard(props) {
             />
             <div className="event-card-body">
                 <h2 className="event-card-title">{props.party}</h2>
-                <p className="event-card-description">
-                    {props.more}
+                <p className="event-card-date">
+                    {props.date}
                 </p>
                 <h3 className="event-card-rating">{props.rating}</h3>
                 <button className="event-card-btn"

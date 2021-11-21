@@ -13,18 +13,23 @@
  
 }
 
+.pop-card-img{
+    height:40%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
 .pop-card-inner {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     right:0;
     position: relative;
-    padding: 32px;
+    padding: 16px;
     width: 100%;
     height:40%;
     max-width: 640px;
     background-color: white;
     z-index: 5;
-
 }
 
 .pop-card-inner .close-btn {
@@ -35,16 +40,42 @@
 
 }
 
-.pop-card-img{
-    height:40%;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+.pop-card-title{
+
+}
+
+.pop-card-date{
+    font-size:medium;
+}
+
+.pop-card-address{
+    font-size:16px;
+    font-weight:400;
+    margin-top:1rem;
+    color:goldenrod;
+}
+.pop-card-address::before{
+    content:"Address: ";
+    position:relative;
+    color:black;
+}
+
+.pop-card-desc{
+    font-size:16px;
+    margin-top:1rem;
+    color:goldenrod;
+    word-wrap:break-word;
+}
+.pop-card-desc::before{
+    content:"Description: ";
+    position:relative;
+    color:black;
 }
 
 .pop-card-rating{
     color:rgb(0, 72, 226);
     font-size:1.4rem;
-    margin-top:0.6rem;  
+    margin-top:1rem;  
 }
 .pop-card-rating::before{
     content:"Upvotes: ";
@@ -53,13 +84,14 @@
 }
 
 .pop-card-user{
-    color:rgb(9, 255, 0);
+    bottom:0;
+    position:absolute;
+    color:goldenrod;
     font-size:1rem;
-    margin-top:1.5rem;  
+    margin-bottom:0.5rem;
 }
-
 .pop-card-user::before{
-    content:"Posted by: ";
+    content:"Hosted by: ";
     position:relative;
     color:rgb(0, 0, 0);
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Geocode from "react-geocode"
 
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 function MidStack(props){
 
     Geocode.setApiKey("AIzaSyDOQ7paZFBDSnK0stDffkN8VdYeFwnzq3U")
+    
+    const [addressHelper, setAddressHelper] = useState("The address where the party will take place")
 
     const addressOnChange = () => {
         Geocode.fromAddress(props.address).then(
@@ -19,6 +21,7 @@ function MidStack(props){
                 const { lat, lng } = response.results[0].geometry.location;
                 props.setLocation({lat,lng})
                 props.setAddy("Good Address")
+                setAddressHelper("Current Address: \"" + props.address + "\"")
             },
             (error) => {
             props.setAddy("Error: Address Invalid")
@@ -42,7 +45,7 @@ function MidStack(props){
                 id="location"
                 label="Address"
                 margin="normal"
-                helperText="The address where the party will take place"
+                helperText={addressHelper}
                 onChange={event=>props.setAddress(event.target.value)}
             />
             <Button 

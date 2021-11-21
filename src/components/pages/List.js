@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Tile from "./List/Tile"
 import './List/Tile.css'
+import dayFormat from "../../dayFormat"
 
 import { db } from '../../firebase'
-import { collection , getDocs } from 'firebase/firestore'
+import { collection , getDocs, Timestamp, GeoPoint } from 'firebase/firestore'
 
 function List() {
     const [pinData, setPinData] = useState([])
@@ -19,14 +20,18 @@ function List() {
         getPinData()
     }, [])
 
-    const tileList = pinData.map(tile => <Tile
-        alt={tile.id}
-        key={tile.id}
+    const tileList = pinData.map((tile,index) => <Tile
+        alt={index}
+        key={index}
+
         party={tile.party}
         img={tile.img}
         rating={tile.rating}
         more={tile.more}
         user={tile.user}
+        rated={tile.rated}
+        address={tile.address}
+        date={dayFormat(tile.date.toDate())}
     />)
     return (
         <div className="tile-list">

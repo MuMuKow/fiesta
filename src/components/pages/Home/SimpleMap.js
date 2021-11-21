@@ -1,11 +1,15 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import GoogleMapReact from 'google-map-react';
+import dayFormat from '../../../dayFormat';
+
+import { db } from '../../../firebase'
+import { collection , getDocs } from 'firebase/firestore'
 
 import './SimpleMap.css'
 
 import Pin from './Pin'
 
-function SimpleMap (props){
+function SimpleMap(props) {
 
   const InitialPos = {
     center: {
@@ -15,24 +19,40 @@ function SimpleMap (props){
     zoom: 15.3
   };
 
-  const pindata = props.item.map((pin,index) => <Pin 
-    key={pin.id}
+  const [pinData, setPinData] = useState([])
+  const pinDataCollectionRef = collection(db, "pinData")
+
+  useEffect(() => {
+
+    const getPinData = async () => {
+      const data = await getDocs(pinDataCollectionRef)
+      setPinData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    }
+
+    getPinData()
+  }, [])
+
+  const pindata = pinData.map((pin, index) => <Pin
+    key={index}
     alt={index}
-    lat={pin.late} 
-    lng={pin.long}
-    eventNum={props.eventNum}
-    setEventNum={props.setEventNum}
+    
+    lat={pin.location.latitude}
+    lng={pin.location.longitude}
     party={pin.party}
     img={pin.img}
     rating={pin.rating}
-    more={pin.more}
+    date={dayFormat(pin.date.toDate())}
     user={pin.user}
+    address={pin.address}
+
+    eventNum={props.eventNum}
+    setEventNum={props.setEventNum}
   />)
-  
+
   return (
     <div className="map-general">
       <GoogleMapReact
-        bootstrapURLKeys={{ key:"AIzaSyDOQ7paZFBDSnK0stDffkN8VdYeFwnzq3U"}}
+        bootstrapURLKeys={{ key: "AIzaSyDOQ7paZFBDSnK0stDffkN8VdYeFwnzq3U" }}
         defaultCenter={InitialPos.center}
         defaultZoom={InitialPos.zoom}
       >

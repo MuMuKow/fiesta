@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 import { db, getCurrentUser } from '../../../firebase'
-import { collection , addDoc } from 'firebase/firestore'
+import { collection, addDoc, Timestamp, GeoPoint } from 'firebase/firestore'
 
 function RightStack(props){
 
@@ -18,11 +18,11 @@ function RightStack(props){
         props.location.lng && 
         props.newMore && 
         props.newParty){
+            const newPoint = new GeoPoint(props.location.lat,props.location.lng)
             await addDoc(pinDataCollectionRef, {
-                date: Math.ceil(props.time.getTime()/1000/60/60/24),
+                date: Timestamp.fromDate(props.time),
                 img: props.imgURL,
-                late: props.location.lat,
-                long: props.location.lng,
+                location: newPoint,
                 more: props.newMore,
                 party: props.newParty,
                 rated: [],
@@ -41,8 +41,9 @@ function RightStack(props){
                 multiline
                 rows={4}
                 margin="normal"
-                helperText="Theme, DJ, Fee, etc."
+                helperText="Theme, DJ, Fee, etc.(max 250 characters)"
                 onChange={event=>props.setNewMore(event.target.value)}
+                inputProps={{ maxLength: 250 }}
             />
             <TextField
                 id="party-host"

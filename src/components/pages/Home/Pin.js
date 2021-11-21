@@ -1,5 +1,5 @@
 import React from 'react'
-import './SimpleMap.css'
+import './SideBar.css'
 import PinImage from './map-pin.svg'
 
 function Pin(props) {
@@ -17,10 +17,11 @@ function Pin(props) {
             <div className={(hover)?"popupActive":"popup"}>
                 <div className="pop-body">
                     <p className="pop-title">{props.party}</p>
-                    <p className="pop-description">
-                        {props.more}
+                    <p className="pop-date">
+                        {props.date}
                     </p>
-                    <h2 className="pop-rating">{props.rating}</h2>
+                    <h3 className="pop-address">{props.address}</h3>
+                    <h3 className="pop-rating">{props.rating}</h3>
                 </div>
             </div>
         </div>

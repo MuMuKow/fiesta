@@ -1,5 +1,7 @@
 import React from 'react'
+
 import './Tile.css'
+
 import Stack from '@mui/material/Stack';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -14,12 +16,13 @@ function Tile(props) {
             />
             <div className="tile-body">
                 <h1 className="tile-title">{props.party}</h1>
+                <p className="tile-date">{props.date}</p>
                 <p className="tile-description">
                     {props.more}
                 </p>
                 <h3 className="tile-user">{props.user}</h3>
             </div>
-            <Stack sx={{justifyContent:"center",alignItems:"center",width:"30%"}} spacing={2}>
+            <Stack sx={{justifyContent:"center",alignItems:"center",width:"10%"}} spacing={2}>
                     <IconButton>
                         <UpIcon sx={{color:"green",fontSize: 40}}/>
                     </IconButton>
