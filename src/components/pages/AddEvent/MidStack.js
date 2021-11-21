@@ -38,6 +38,7 @@ function MidStack(props){
                 margin="normal"
                 helperText="The party's name"
                 onChange={event=>props.setNewParty(event.target.value)}
+                inputProps={{ maxLength: 40 }}
             />
             <TextField
                 fullWidth

@@ -17,6 +17,7 @@
     height:40%;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .pop-card-inner {
@@ -34,14 +35,15 @@
 
 .pop-card-inner .close-btn {
     position: absolute;
-    top: 16px;
+    bottom: 16px;
     right: 16px;
     z-index: 5;
 
 }
 
 .pop-card-title{
-
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .pop-card-date{
@@ -63,7 +65,6 @@
 .pop-card-desc{
     font-size:16px;
     margin-top:1rem;
-    color:goldenrod;
     word-wrap:break-word;
 }
 .pop-card-desc::before{
@@ -89,6 +90,8 @@
     color:goldenrod;
     font-size:1rem;
     margin-bottom:0.5rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .pop-card-user::before{
     content:"Hosted by: ";

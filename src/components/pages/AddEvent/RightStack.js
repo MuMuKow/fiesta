@@ -41,9 +41,9 @@ function RightStack(props){
                 multiline
                 rows={4}
                 margin="normal"
-                helperText="Theme, DJ, Fee, etc.(max 250 characters)"
+                helperText="Theme, DJ, Fee, etc.(max 225 characters)"
                 onChange={event=>props.setNewMore(event.target.value)}
-                inputProps={{ maxLength: 250 }}
+                inputProps={{ maxLength: 225 }}
             />
             <TextField
                 id="party-host"
@@ -51,6 +51,7 @@ function RightStack(props){
                 margin="normal"
                 helperText={"Optional: \"Anonymous\" by default"}
                 onChange={event=>props.setHostName(event.target.value)}
+                inputProps={{ maxLength: 40 }}
             />
             <Button 
                 variant="contained" 
