@@ -28,14 +28,31 @@
 }
 
 .tile-date{
-    color:goldenrod;
     font-weight: bold;
     font-size:smaller;
 }
 
-.tile-description{
+.tile-address{
+    margin-top:1rem;
+    color:goldenrod;
+    font-size:smaller;
+}
+.tile-address::before{
+    content:"Address: ";
+    position:relative;
+    color:black;
+}
+
+.tile-desc{
     margin-top: 1rem;
     word-wrap:break-word;
+    font-size:smaller;
+    line-height:1.4;
+}
+.tile-desc::before{
+    content:"Description: ";
+    position:relative;
+    color:black;
 }
 
 .tile-rating{

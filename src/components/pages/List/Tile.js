@@ -17,7 +17,8 @@ function Tile(props) {
             <div className="tile-body">
                 <h1 className="tile-title">{props.party}</h1>
                 <p className="tile-date">{props.date}</p>
-                <p className="tile-description">
+                <p className="tile-address">{props.address}</p>
+                <p className="tile-desc">
                     {props.more}
                 </p>
                 <h3 className="tile-user">{props.user}</h3>
