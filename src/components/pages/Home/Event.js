@@ -1,6 +1,10 @@
 import React, {useState,useEffect} from "react"
 import "./Event.css"
+
 import Button from '@mui/material/Button';
+import CloseIcon from '@mui/icons-material/Close';
+import { IconButton } from "@mui/material";
+
 import dayFormat from "../../../dayFormat.js";
 
 import { db } from '../../../firebase'
@@ -37,9 +41,12 @@ function Event(props) {
                 <p className="pop-card-desc">{chosen.more}</p>
                 <h3 className="pop-card-rating">{chosen.rating}</h3>
                 <h4 className="pop-card-user">{chosen.user}</h4>
-                <Button className="close-btn" variant="contained" onClick={() => props.setEventButton(false)}>
-                    Close
+                <Button >
+                    X
                 </Button>
+                <IconButton className="close-btn" onClick={() => props.setEventButton(false)}>
+                    <CloseIcon sx={{color:"black",fontSize: 40}}/>
+                </IconButton>
             </div>
         </div>
     ) : "";
