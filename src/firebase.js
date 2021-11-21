@@ -6,7 +6,7 @@ import { formatMuiErrorMessage } from "@mui/utils";
 
 // setting up connection to firebase 
 const firebaseConfig = {
-  apiKey: "AIzaSyBRuwmozb0cfWencWUOYu3yGlK5suHHolU",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "fiesta-5caa1.firebaseapp.com",
   projectId: "fiesta-5caa1",
   storageBucket: "fiesta-5caa1.appspot.com",
