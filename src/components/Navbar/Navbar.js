@@ -1,10 +1,30 @@
 import React from 'react'
-import "./Navbar.css"
-import {MenuList} from "./MenuList"
 import { NavLink } from 'react-router-dom'
+import { useAuth } from '../../firebase'
+
+import "./Navbar.css"
 import logoImage from './fiesta.png'
 
+
 function NavBar() {
+    const MenuList = [
+        {
+            title:"Map",
+            url: "/"
+        },
+        {
+            title:"List",
+            url: "/list"
+        },
+        {
+            title:"Add",
+            url: "/add"
+        },
+        {
+            title:"Login",
+            url: "/login"
+        }
+    ]
     const menuList = MenuList.map(({url, title}, index) => {
         return (
             <li key={index}>

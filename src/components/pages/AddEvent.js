@@ -12,7 +12,7 @@ function AddEvent() {
     const [newParty,setNewParty] = useState("")
     const [hostName,setHostName] = useState("Anonymous")
     const [newMore,setNewMore] = useState("")
-    const [time, setTime] = useState(new Date);
+    const [time, setTime] = useState(new Date());
 
     const [imgURL,setURL] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png")
     

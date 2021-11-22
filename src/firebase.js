@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile} from "firebase/auth";
 import { useEffect, useState } from "react";
 import {getFirestore} from '@firebase/firestore' 
-import { formatMuiErrorMessage } from "@mui/utils";
 
 // setting up connection to firebase 
 const firebaseConfig = {
@@ -19,21 +18,10 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
 
-const auth = getAuth();
-
-export const getCurrentUser = auth.currentUser;
+export const auth = getAuth(app);
 
 export function signup(email, password, username) {
-  return createUserWithEmailAndPassword(auth, email, password).then(
-    () => {
-      updateProfile(getCurrentUser, {
-        displayName: username
-      }).catch((error) => {
-        alert(error)
-      });
-    }).catch((error) => {
-      alert(error)
-    });
+  return createUserWithEmailAndPassword(auth, email, password)
 }
 
 export function login(email, password) {

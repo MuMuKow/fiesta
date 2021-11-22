@@ -6,32 +6,32 @@ import './Login.css'
 
 // for the backend + to add the 
 import {signup} from '../../../firebase';
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { getAuth } from "firebase/auth";
 
 
 let emailRef;
 let passwordRef;
 let usernameRef;
-
-
-// add user
-async function handleSignup() {
-    try {
-     await signup(
-        emailRef.current.value,
-        passwordRef.current.value,
-        usernameRef.current.value
-    );} catch {
-     alert("Error!");
-    }
- }
  
 function Register() {
+    
+    const [user,setUser] = useState()
 
     emailRef = useRef();
     passwordRef = useRef();
     usernameRef = useRef();
+
+    async function handleSignup() {
+        try {
+            setUser(await signup(emailRef.current.value,passwordRef.current.value,usernameRef.current.value))
+            console.log(user)
+        }
+        catch (error) {
+            alert(error);
+        }
+    }
+
     return (
         <div >
             <Stack>

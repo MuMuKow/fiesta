@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Tile from "./List/Tile"
 import './List/Tile.css'
 import dayFormat from "../../dayFormat"
 
-import { db } from '../../firebase'
-import { collection , getDocs, Timestamp, GeoPoint } from 'firebase/firestore'
+import usePinData from './usePinData'
 
 function List() {
-    const [pinData, setPinData] = useState([])
-    const pinDataCollectionRef = collection(db, "pinData")
-
-    useEffect(() =>{
-        
-        const getPinData = async () => {
-            const data = await getDocs(pinDataCollectionRef)
-            setPinData(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-        }
-
-        getPinData()
-    }, [])
+    
+    const pinData = usePinData()
 
     const tileList = pinData.map((tile,index) => <Tile
         alt={index}

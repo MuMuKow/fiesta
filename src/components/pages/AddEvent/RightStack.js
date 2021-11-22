@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-import { db, getCurrentUser } from '../../../firebase'
+import { db, useAuth } from '../../../firebase'
 import { collection, addDoc, Timestamp, GeoPoint } from 'firebase/firestore'
 
 function RightStack(props){
@@ -12,7 +12,7 @@ function RightStack(props){
     const pinDataCollectionRef = collection(db, "pinData")
 
     const createEvent = async () => {
-        if(props.goodAddy == "Good Address" &&
+        if(props.goodAddy === "Good Address" &&
         props.imgURL && 
         props.location.lat && 
         props.location.lng && 

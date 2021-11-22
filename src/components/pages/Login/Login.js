@@ -3,8 +3,7 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import './Login.css'
-import { useEffect, useState } from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import {useAuth, login, logout} from '../../../firebase';
 
@@ -12,27 +11,31 @@ let emailRef;
 let passwordRef;
 
 
-// add user
-async function handleLogin() {
-    try {
-        await login(emailRef.current.value,passwordRef.current.value);
-    } catch {
-        alert("Error!");
-    }
-}
-
-  async function handleLogout() {
-    try {
-        await logout();
-    } catch {
-        alert("Error!");
-    }
-}
-
 function Login() {
+    
+    const [user,setUser] = useState()
     const currentUser = useAuth();
+
     emailRef = useRef();
     passwordRef = useRef();
+
+    async function handleLogin() {
+        try {
+            setUser(await login(emailRef.current.value,passwordRef.current.value))
+            console.log(user)
+        } catch (error){
+            alert(error);
+        }
+    }
+
+    async function handleLogout() {
+        try {
+            await logout();
+        } catch (error) {
+            alert(error);
+        }
+    }
+
     return (
         <div >
             <Stack>
