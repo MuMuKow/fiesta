@@ -93,15 +93,14 @@
 .popupActive{
     z-index: 1000;
     width: 200px;
-    height: 90px;
     color: white;
     background-color: rgba(0,0,0,0.7);
     border-radius: 2px;
     border: black;
     border-width: 1px;
-    bottom: 140px;
     position: relative;
     transition:0.1s;
+    padding:1px;
 }
 
 .popup{
