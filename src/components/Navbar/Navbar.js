@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../firebase'
 
@@ -7,6 +7,8 @@ import logoImage from './fiesta.png'
 
 
 function NavBar() {
+    const currentUser = useAuth()
+    const userName = currentUser?.displayName
     const MenuList = [
         {
             title:"Map",
@@ -21,7 +23,7 @@ function NavBar() {
             url: "/add"
         },
         {
-            title:"Login",
+            title:userName?userName:"Login",
             url: "/login"
         }
     ]

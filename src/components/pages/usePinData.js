@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { db } from '../../firebase'
 import { collection , getDocs } from 'firebase/firestore'
+import SortData from '../../SortData'
 
 export default function usePinData(){
 
@@ -16,5 +17,5 @@ export default function usePinData(){
         getPinData()
     }, [])
 
-    return pinData
+    return SortData(pinData)
 }
