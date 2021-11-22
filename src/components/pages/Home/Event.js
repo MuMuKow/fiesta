@@ -28,9 +28,6 @@ function Event(props) {
                 <p className="pop-card-desc">{chosen.more}</p>
                 <h3 className="pop-card-rating">{chosen.rating}</h3>
                 <h4 className="pop-card-user">{chosen.user}</h4>
-                <Button >
-                    X
-                </Button>
                 <IconButton className="close-btn" onClick={() => props.setEventButton(false)}>
                     <CloseIcon sx={{color:"black",fontSize: 40}}/>
                 </IconButton>
