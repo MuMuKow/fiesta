@@ -12,7 +12,7 @@ import { getAuth } from "firebase/auth";
 
 let emailRef;
 let passwordRef;
-let usernameRef;
+let passConRef;
  
 function Register() {
     
@@ -20,12 +20,17 @@ function Register() {
 
     emailRef = useRef();
     passwordRef = useRef();
-    usernameRef = useRef();
+    passConRef = useRef();
 
     async function handleSignup() {
         try {
-            setUser(await signup(emailRef.current.value,passwordRef.current.value,usernameRef.current.value))
-            console.log(user)
+            if(passConRef.current.value == passwordRef.current.value){
+                setUser(await signup(emailRef.current.value,passwordRef.current.value))
+                console.log(user)
+            }
+            else{
+                alert("Password does not match")
+            }
         }
         catch (error) {
             alert(error);
@@ -37,16 +42,6 @@ function Register() {
             <Stack>
                 <div>
                     <form>
-                    <TextField
-                        inputRef={usernameRef}
-                        fullWidth
-                        required
-                        id="reg-name"
-                        label="Username"
-                        variant="filled"
-                        margin="dense"
-                        helperText="Please enter your username"
-                    />
                     <TextField
                         inputRef={emailRef}
                         fullWidth
@@ -68,6 +63,7 @@ function Register() {
                         margin="normal"
                     />
                     <TextField
+                        inputRef={passConRef}
                         fullWidth
                         required
                         id="reg-pass-again"

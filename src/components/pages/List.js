@@ -13,12 +13,14 @@ function List() {
         alt={index}
         key={index}
 
+        id={tile.id}
         party={tile.party}
         img={tile.img}
         rating={tile.rating}
         more={tile.more}
         user={tile.user}
-        rated={tile.rated}
+        rateup={tile.rateup}
+        ratedown={tile.ratedown}
         address={tile.address}
         date={dayFormat(tile.date.toDate())}
     />)

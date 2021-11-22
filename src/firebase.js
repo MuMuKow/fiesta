@@ -20,7 +20,7 @@ export const db = getFirestore(app);
 
 export const auth = getAuth(app);
 
-export function signup(email, password, username) {
+export function signup(email, password) {
   return createUserWithEmailAndPassword(auth, email, password)
 }
 

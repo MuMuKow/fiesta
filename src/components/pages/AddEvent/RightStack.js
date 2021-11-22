@@ -25,7 +25,8 @@ function RightStack(props){
                 location: newPoint,
                 more: props.newMore,
                 party: props.newParty,
-                rated: [],
+                rateup: [],
+                ratedown: [],
                 rating: 0,
                 user: props.hostName,
                 address: props.address

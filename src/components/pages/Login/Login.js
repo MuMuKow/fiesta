@@ -1,7 +1,5 @@
 import React from 'react'
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import { Stack, Button, TextField } from '@mui/material';
 import './Login.css'
 import { useRef, useState } from "react";
 
@@ -41,9 +39,10 @@ function Login() {
             <Stack>
                 <div>
                     {currentUser?
-                        <div>Currently logged in as: { currentUser?.email }
+                        <Stack>
+                            Currently logged in as: { currentUser?.email }
                             <Button onClick={handleLogout} variant="contained" sx={{margin: "2vh"}}>Logout</Button>
-                        </div>
+                        </Stack>
                     :
                         <form>
                             <TextField

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../firebase'
+import { Avatar } from '@mui/material'
 
 import "./Navbar.css"
 import logoImage from './fiesta.png'
@@ -21,12 +22,9 @@ function NavBar() {
         {
             title:"Add",
             url: "/add"
-        },
-        {
-            title:userName?userName:"Login",
-            url: "/login"
         }
     ]
+
     const menuList = MenuList.map(({url, title}, index) => {
         return (
             <li key={index}>
@@ -36,12 +34,22 @@ function NavBar() {
             </li>
         )
     })
+    
     return (
         <nav>
             <NavLink exact to="/">
                 <img src={logoImage} alt="logo" className="logo"/>
             </NavLink>
-            <ul className="menu-list">{menuList}</ul>
+            <ul className="menu-list">
+                {menuList}
+                <NavLink exact to="/login">
+                <Avatar
+                sx={{ bgcolor: "gray" }}>
+                {currentUser?.email?.charAt(0).toUpperCase()}    
+                </Avatar>
+                </NavLink>
+            </ul>
+            
         </nav>
     )
 }
