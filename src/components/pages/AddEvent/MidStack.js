@@ -22,9 +22,11 @@ function MidStack(props){
                 props.setLocation({lat,lng})
                 props.setAddy("Good Address")
                 setAddressHelper("Current Address: \"" + props.address + "\"")
+                props.updateSubmit()
             },
             (error) => {
             props.setAddy("Error: Address Invalid")
+            props.updateSubmit()
         })
     }
 
@@ -37,7 +39,7 @@ function MidStack(props){
                 label="Name"
                 margin="normal"
                 helperText="The party's name"
-                onChange={event=>props.setNewParty(event.target.value)}
+                onChange={event=>[props.setNewParty(event.target.value), props.updateSubmit()]}
                 inputProps={{ maxLength: 40 }}
             />
             <TextField
@@ -61,7 +63,7 @@ function MidStack(props){
                     renderInput={(prop) => <TextField {...prop} margin="normal" helperText="Starting Time"/>}
                     value={props.time}
                     onChange={(newValue) => {
-                        props.setTime(newValue);
+                        props.setTime(newValue)
                     }}
                 />
             </LocalizationProvider>

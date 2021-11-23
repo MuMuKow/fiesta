@@ -26,6 +26,7 @@ function ImageStack(props){
           props.setURL(reader.result);
         };
         reader.readAsDataURL(files[0]);
+        props.updateSubmit()
     };
 
     return(
@@ -47,6 +48,7 @@ function ImageStack(props){
             {!switchTab?
                 <UrlField 
                     setTempURL={setTempURL}
+                    updateSubmit={props.updateSubmit}
                     setURL={props.setURL}
                     imgURLTemp={imgURLTemp}/>
                 :

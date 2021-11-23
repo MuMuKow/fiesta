@@ -14,50 +14,70 @@ function Tile(props) {
 
     const currentUser = useAuth()
 
-    const [upVote,setUpVote] = useState(currentUser ? props.rateup.includes(currentUser.uid) : false)
-    const [downVote,setDownVote] = useState(currentUser ? props.ratedown.includes(currentUser.uid) : false)
+    const [upVote,setUpVote] = useState(false)
+    const [downVote,setDownVote] = useState(false)
+    const [newRating,updateRating] = useState(props.rating)
 
     const removeElement = (array, item) => {
         let index = array.indexOf(item);
-        if (index !== -1) {
-            array.splice(index, 1);
+        while(index !== -1){
+            array.splice(index, 1)
+            index = array.indexOf(item);
         }
         return array
     }
 
-    const updateVote = async (offset) => {
-        const userDoc = doc(db, "pinData", props.id)
-        if(offset == 1 && !upVote){
-            const upArray = props.rateup
-            upArray.push(currentUser.uid)
-            if(!downVote){
-                await updateDoc(userDoc, {rating: props.rating + 1, rateup: upArray})
+    const updateVote = (offset) => {
+        if(currentUser){
+            const userDoc = doc(db, "pinData", props.id)
+            if(offset == 1 && !upVote){
+                const upArray = props.rateup
+                upArray.push(currentUser.uid)
+                setUpVote(true)
+                updateRating(props.rating+1)
+                if(!downVote){
+                    updateDoc(userDoc, {rating: props.rating + 1, rateup: upArray})
+                }
+                else{
+                    setDownVote(false)
+                    updateDoc(userDoc, {rating: props.rating + 2, rateup: upArray, ratedown: removeElement(props.ratedown,currentUser.uid)})
+                }
+            }
+            else if(offset == -1 && !downVote){
+                const downArray = props.ratedown
+                downArray.push(currentUser.uid)
+                setDownVote(false)
+                updateRating(props.rating-1)
+                if(!upVote){
+                    updateDoc(userDoc, {rating: props.rating - 1, ratedown: downArray})
+                }
+                else{
+                    setUpVote(false)
+                    updateDoc(userDoc, {rating: props.rating - 2, ratedown: downArray, rateup: removeElement(props.rateup,currentUser.uid)})
+                }
             }
             else{
-                await updateDoc(userDoc, {rating: props.rating + 2, rateup: upArray, ratedown: removeElement(props.ratedown,currentUser.uid)})
-            }
-        }
-        else if(offset == -1 && !downVote){
-            const downArray = props.ratedown
-            downArray.push(currentUser.uid)
-            if(!upVote){
-                await updateDoc(userDoc, {rating: props.rating - 1, ratedown: downArray})
-            }
-            else{
-                await updateDoc(userDoc, {rating: props.rating - 2, ratedown: downArray, rateup: removeElement(props.rateup,currentUser.uid)})
+                if(offset == 1){
+                    updateRating(props.rating-1)
+                    setUpVote(false)
+                    updateDoc(userDoc, {rating: props.rating - 1, rateup: removeElement(props.rateup,currentUser.uid)})
+                }
+                else if(offset == -1){
+                    updateRating(props.rating+1)
+                    setDownVote(false)
+                    updateDoc(userDoc, {rating: props.rating + 1, ratedown: removeElement(props.ratedown,currentUser.uid)})
+                }
             }
         }
         else{
-            if(offset == 1){
-                await updateDoc(userDoc, {rating: props.rating - 1, rateup: removeElement(props.rateup,currentUser.uid)})
-            }
-            else if(offset == -1){
-                await updateDoc(userDoc, {rating: props.rating + 1, ratedown: removeElement(props.ratedown,currentUser.uid)})
-            }
+            alert("Login to vote!")
         }
     }
 
-    useEffect( () => {}, [upVote,downVote])
+    useEffect( () => {
+        setUpVote(currentUser ? props.rateup.includes(currentUser.uid) : false)
+        setDownVote(currentUser ? props.ratedown.includes(currentUser.uid) : false)
+    })
 
     return (
         <div className="one-tile">
@@ -75,19 +95,19 @@ function Tile(props) {
                 <h3 className="tile-user">{props.user}</h3>
             </div>
             <Stack sx={{justifyContent:"center",alignItems:"center",width:"10%"}} spacing={2}>
-                <IconButton onClick={() => {updateVote(1)}}>
+                {currentUser ? <IconButton onClick={() => {updateVote(1)}}>
                     {!upVote?
                     <UpIcon sx={{color:"green", fontSize: 40, borderRadius:"50px"}}/>:
                     <UpIcon sx={{color:"green", fontSize: 40, backgroundColor:"lightGray", borderRadius:"50px"}}/>
                     }
-                </IconButton>
-                <h2 className="tile-rating">{props.rating}</h2>
-                <IconButton onClick={() => {updateVote(-1)}}>
+                </IconButton>:""}
+                <h2 className="tile-rating">{newRating}</h2>
+                {currentUser ? <IconButton onClick={() => {updateVote(-1)}}>
                     {!downVote?
                     <DownIcon sx={{color:"red", fontSize: 40, borderRadius:"50px"}}/>:
                     <DownIcon sx={{color:"red", fontSize: 40, backgroundColor:"lightGray", borderRadius:"50px"}}/>
                     }
-                </IconButton>
+                </IconButton>:""}
             </Stack>
         </div>
     )
