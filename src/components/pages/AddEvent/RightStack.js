@@ -28,24 +28,44 @@ function RightStack(props){
     }
 
     const createEvent = async () => {
-        if(props.checkValid() === ""){
-            const newPoint = new GeoPoint(props.location.lat,props.location.lng)
-            setOpen(true)
-            await addDoc(pinDataCollectionRef, {
-                date: Timestamp.fromDate(props.time),
-                img: props.imgURL,
-                location: newPoint,
-                more: props.newMore,
-                party: props.newParty,
-                rateup: [],
-                ratedown: [],
-                rating: 0,
-                user: checkHost(props.hostName),
-                address: props.address,
-                userid: currentUser.uid
-            })
-        }else{
-            setshowError(true)
+        if(!props.edit){
+            if(props.checkValid() === ""){
+                const newPoint = new GeoPoint(props.location.lat,props.location.lng)
+                setOpen(true)
+                await addDoc(pinDataCollectionRef, {
+                    date: Timestamp.fromDate(props.time),
+                    img: props.imgURL,
+                    location: newPoint,
+                    more: props.newMore,
+                    party: props.newParty,
+                    rateup: [],
+                    ratedown: [],
+                    rating: 0,
+                    user: checkHost(props.hostName),
+                    address: props.address,
+                    userid: currentUser.uid
+                })
+            } else{
+                setshowError(true)
+            }
+        } else{
+            if(currentUser?.uid === props.uid){
+                const newPoint = new GeoPoint(props.location.lat,props.location.lng)
+                const userDoc = doc(db, "pinData", props.id)
+                updateDoc(userDoc, {
+                    date: Timestamp.fromDate(props.time),
+                    img: props.imgURL,
+                    location: newPoint,
+                    more: props.newMore,
+                    party: props.newParty,
+                    rateup: [],
+                    ratedown: [],
+                    rating: 0,
+                    user: checkHost(props.hostName),
+                    address: props.address,
+                    userid: currentUser.uid
+                })
+            }
         }
     }
 
@@ -61,6 +81,7 @@ function RightStack(props){
                 helperText="Theme, DJ, Fee, etc.(max 225 characters)"
                 onChange={event=>props.setNewMore(event.target.value)}
                 inputProps={{ maxLength: 225 }}
+                defaultValue={props.newMore}
             />
             <TextField
                 id="party-host"
@@ -69,6 +90,7 @@ function RightStack(props){
                 helperText={"Optional: \"Anonymous\" by default"}
                 onChange={event=>props.setHostName(event.target.value)}
                 inputProps={{ maxLength: 40 }}
+                defaultValue={props.hostName}
             />
             <Button 
                 variant="contained" 

@@ -1,8 +1,10 @@
 import React from 'react'
-import Tile from "./List/Tile"
-import './List/Tile.css'
-import dayFormat from "../../dayFormat"
 
+import Tile from "./List/Tile"
+
+import './List/Tile.css'
+
+import dayFormat from "../../dayFormat"
 import usePinData from './usePinData'
 
 function List() {
@@ -21,13 +23,19 @@ function List() {
         user={tile.user}
         rateup={tile.rateup}
         ratedown={tile.ratedown}
+
         address={tile.address}
+        lat={tile.location.latitude}
+        lng={tile.location.longitude}
+
         userid={tile.userid}
         date={dayFormat(tile.date.toDate())}
     />)
     return (
-        <div className="tile-list">
-            {tileList}
+        <div>
+            <div className="tile-list">
+                {tileList}
+            </div>
         </div>
     )
 }

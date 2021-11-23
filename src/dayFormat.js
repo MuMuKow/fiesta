@@ -5,10 +5,10 @@ function dayFormat(inputDate){
     const hour = inputDate.getHours()
     const minute = (inputDate.getMinutes() < 10)? "0" + inputDate.getMinutes(): inputDate.getMinutes()
     if(hour < 13){
-        return month + "/" + day + "/" + year + " " + hour + ":" + minute + "AM"
+        return month + "/" + day + "/" + year + " " + hour + ":" + minute + " am"
     }
     else{
-        return month + "/" + day + "/" + year + " " + (hour-12) + ":" + minute + "PM"
+        return month + "/" + day + "/" + year + " " + (hour-12) + ":" + minute + " pm"
     }
 }
 

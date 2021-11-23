@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import { updateDoc, doc } from '@firebase/firestore';
 import { db, useAuth } from '../../../firebase';
 
 import './Tile.css'
+import EditEvent from './EditEvent'
 
 import Stack from '@mui/material/Stack';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -22,6 +23,8 @@ function Tile(props) {
     const [newRating,updateRating] = useState(props.rating)
     const [owner,setOwner] = useState(true)
 
+    const [openEdit, setOpenEdit] = useState(false)
+
     const removeElement = (array, item) => {
         let index = array.indexOf(item);
         while(index !== -1){
@@ -31,6 +34,11 @@ function Tile(props) {
         return array
     }
     let pass
+    useEffect( () => {
+        setUpVote(currentUser ? props.rateup.includes(currentUser.uid) : false)
+        setDownVote(currentUser ? props.ratedown.includes(currentUser.uid) : false)
+        setOwner(currentUser?.uid === props.userid)
+    },[currentUser, props.rateup, props.ratedown, props.userid])
 
     const updateVote = (offset) => {
         if(currentUser){
@@ -63,12 +71,12 @@ function Tile(props) {
             }
             else{
                 if(offset === 1){
-                    updateRating(props.rating-1)
+                    updateRating(props.rating)
                     setUpVote(false)
                     updateDoc(userDoc, {rating: props.rating - 1, rateup: removeElement(props.rateup,currentUser.uid)})
                 }
                 else if(offset === -1){
-                    updateRating(props.rating+1)
+                    updateRating(props.rating)
                     setDownVote(false)
                     updateDoc(userDoc, {rating: props.rating + 1, ratedown: removeElement(props.ratedown,currentUser.uid)})
                 }
@@ -78,12 +86,6 @@ function Tile(props) {
             alert("Login to vote!")
         }
     }
-
-    useEffect( () => {
-        setUpVote(currentUser ? props.rateup.includes(currentUser.uid) : false)
-        setDownVote(currentUser ? props.ratedown.includes(currentUser.uid) : false)
-        setOwner(currentUser?.uid === props.userid)
-    },[currentUser, props.rateup, props.ratedown, props.userid])
 
     return (
         <div className="one-tile">
@@ -102,7 +104,7 @@ function Tile(props) {
             </div>
             <Stack sx={{justifyContent:"center",alignItems:"center",width:"10%"}} spacing={2}>
                 {owner ? 
-                    <IconButton onClick={() => pass}>
+                    <IconButton onClick={() => setOpenEdit(true)}>
                         <EditIcon sx={{color:"gray", fontSize: 40, borderRadius:"50px"}}/>
                     </IconButton>
                 :
@@ -130,6 +132,21 @@ function Tile(props) {
                         </IconButton>:""
                     )
                 }
+                <EditEvent 
+                    openEdit={openEdit} 
+                    setOpenEdit={setOpenEdit}
+    
+                    party={props.party}
+                    img={props.img}
+                    more={props.more}
+                    date={props.date}
+                    user={props.user}
+                    address={props.address}
+                    userid={props.userid}
+
+                    rating={props.rating}
+                    id={props.id}
+                />
             </Stack>
         </div>
     )

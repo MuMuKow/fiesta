@@ -39,6 +39,7 @@ function MidStack(props){
                 helperText="The party's name"
                 onChange={event=>props.setNewParty(event.target.value)}
                 inputProps={{ maxLength: 40 }}
+                defaultValue={props.newParty}
             />
             <TextField
                 fullWidth
@@ -48,6 +49,7 @@ function MidStack(props){
                 margin="normal"
                 helperText={addressHelper}
                 onChange={event=>props.setAddress(event.target.value)}
+                defaultValue={props.address}
             />
             <Button 
                 variant="outlined"

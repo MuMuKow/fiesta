@@ -17,7 +17,6 @@ let passConRef;
 function Register() {
     
     const [user,setUser] = useState()
-    const [goodFill, setGoodFill] = useState(false)
 
     emailRef = useRef();
     passwordRef = useRef();
