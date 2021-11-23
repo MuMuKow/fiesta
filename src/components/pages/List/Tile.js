@@ -5,12 +5,12 @@ import { db, useAuth } from '../../../firebase';
 
 import './Tile.css'
 import EditEvent from './EditEvent'
+import DeleteEvent from './DeleteEvent';
 
 import Stack from '@mui/material/Stack';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DownIcon from '@mui/icons-material/KeyboardArrowDown';
 import IconButton from '@mui/material/IconButton';
-
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -24,6 +24,7 @@ function Tile(props) {
     const [owner,setOwner] = useState(true)
 
     const [openEdit, setOpenEdit] = useState(false)
+    const [openDelete,setOpenDelete] = useState(false)
 
     const removeElement = (array, item) => {
         let index = array.indexOf(item);
@@ -33,7 +34,7 @@ function Tile(props) {
         }
         return array
     }
-    let pass
+    
     useEffect( () => {
         setUpVote(currentUser ? props.rateup.includes(currentUser.uid) : false)
         setDownVote(currentUser ? props.ratedown.includes(currentUser.uid) : false)
@@ -119,7 +120,7 @@ function Tile(props) {
                 }
                 <h2 className="tile-rating">{newRating}</h2>
                 {owner ? 
-                    <IconButton onClick={() => pass}>
+                    <IconButton onClick={() => setOpenDelete(true)}>
                         <DeleteForeverIcon sx={{color:"black", fontSize: 40, borderRadius:"50px"}}/>
                     </IconButton>
                 :
@@ -151,6 +152,14 @@ function Tile(props) {
                     id={props.id}
                 />
             </Stack>
+            <DeleteEvent
+                party={props.party}
+                openDelete={openDelete}
+                setOpenDelete={setOpenDelete}
+                id={props.id}
+                userid={props.userid}
+                currentid={currentUser?.uid}
+            />
         </div>
     )
 }
