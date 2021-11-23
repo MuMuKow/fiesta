@@ -144,6 +144,9 @@ function Tile(props) {
                     address={props.address}
                     userid={props.userid}
 
+                    rateup={props.rateup}
+                    ratedown={props.ratedown}
+
                     rating={props.rating}
                     id={props.id}
                 />

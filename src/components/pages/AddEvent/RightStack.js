@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import { Backdrop } from '@mui/material';
 
 import { db, useAuth } from '../../../firebase'
-import { collection, addDoc, Timestamp, GeoPoint } from 'firebase/firestore'
+import { collection, addDoc, Timestamp, GeoPoint, doc, updateDoc } from 'firebase/firestore'
 
 function RightStack(props){
 
@@ -49,22 +49,27 @@ function RightStack(props){
                 setshowError(true)
             }
         } else{
-            if(currentUser?.uid === props.uid){
-                const newPoint = new GeoPoint(props.location.lat,props.location.lng)
-                const userDoc = doc(db, "pinData", props.id)
-                updateDoc(userDoc, {
-                    date: Timestamp.fromDate(props.time),
-                    img: props.imgURL,
-                    location: newPoint,
-                    more: props.newMore,
-                    party: props.newParty,
-                    rateup: [],
-                    ratedown: [],
-                    rating: 0,
-                    user: checkHost(props.hostName),
-                    address: props.address,
-                    userid: currentUser.uid
-                })
+            if(currentUser?.uid === props.userid){
+                if(props.checkValid() === ""){
+                    const newPoint = new GeoPoint(props.location.lat,props.location.lng)
+                    const userDoc = doc(db, "pinData", props.id)
+                    setOpen(true)
+                    await updateDoc(userDoc, {
+                        date: Timestamp.fromDate(props.time),
+                        img: props.imgURL,
+                        location: newPoint,
+                        more: props.newMore,
+                        party: props.newParty,
+                        rateup: props.rateupEdit,
+                        ratedown: props.ratedownEdit,
+                        rating: props.ratingEdit,
+                        user: checkHost(props.hostName),
+                        address: props.address,
+                        userid: props.userid
+                    })
+                } else{
+                    setshowError(true)
+                }
             }
         }
     }

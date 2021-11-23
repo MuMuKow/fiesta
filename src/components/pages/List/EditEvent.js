@@ -86,6 +86,10 @@ function EditEvent(props) {
                             goodAddy={goodAddy}
                             checkValid={checkValid}
 
+                            ratingEdit={props.rating}
+                            rateupEdit={props.rateup}
+                            ratedownEdit={props.ratedown}
+
                             edit={true}
                             id={props.id}
                         />
