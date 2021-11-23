@@ -17,10 +17,7 @@ function AddEvent() {
     const [address,setAddress] = useState("")
     const [location,setLocation] = useState({lat:0,lng:0})
 
-    const [goodSubmit, setSubmit] = useState(true)
     const [goodAddy,setAddy] = useState("Check if Address is Valid")
-
-    const [errorNow, setErrorNow] = useState("")
     
     const checkImage = (src) => { //copied from "https://stackoverflow.com/questions/5678899/change-image-source-if-file-exists"
         var img = new Image();
@@ -31,29 +28,19 @@ function AddEvent() {
     }
 
     const checkValid = () => {
+        checkImage(imgURL)
         if(!(currentUser?.uid)){
             return "Please login"
+        } else if(!newParty){
+            return "Please enter party name"
         } else if(goodAddy !== "Good Address"){
             return "Please enter and check valid address"
         } else if(!newMore){
             return "Please enter party description"
-        } else if(!newParty){
-            return "Please enter party name"
         } else if(!time.getTime()){
             return "Please enter valid time"
         } else{
             return ""
-        }
-    }
-
-    const updateSubmit = () => {
-        checkImage(imgURL)
-        if(checkValid() === ""){
-            setErrorNow(checkValid())
-            setSubmit(false)
-        } else{
-            setErrorNow(checkValid())
-            setSubmit(true)
         }
     }
 
@@ -62,12 +49,10 @@ function AddEvent() {
             {currentUser ? 
             <div className="all-stacks">
                 <ImageStack
-                    updateSubmit={updateSubmit}
                     setURL={setURL}
                     imgURL={imgURL}
                 />
-                <MidStack 
-                    updateSubmit={updateSubmit}
+                <MidStack
                     address={address}
                     setLocation={setLocation}
                     setAddy={setAddy}
@@ -92,11 +77,7 @@ function AddEvent() {
                     setURL={setURL}
 
                     goodAddy={goodAddy}
-                    goodSubmit={goodSubmit}
-                    errorNow={errorNow}
-
                     checkValid={checkValid}
-                    updateSubmit={updateSubmit}
                 />
             </div>:
             <h1 className="all-stacks">

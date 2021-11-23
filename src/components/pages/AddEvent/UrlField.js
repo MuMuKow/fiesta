@@ -15,7 +15,7 @@ function UploadImg(props){
                 margin="dense"
                 onChange={event=>props.setTempURL(event.target.value)}
             />
-            <Button variant="outlined" onClick={()=>[props.setURL(props.imgURLTemp),props.updateSubmit()]} sx={{margin: "2vh",color:"white"}}>
+            <Button variant="outlined" onClick={()=>props.setURL(props.imgURLTemp)} sx={{margin: "2vh",color:"white"}}>
                 Set
             </Button>
         </Stack>

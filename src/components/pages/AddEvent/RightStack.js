@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
+import { NavLink } from 'react-router-dom';
 
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Backdrop } from '@mui/material';
 
 import { db, useAuth } from '../../../firebase'
 import { collection, addDoc, Timestamp, GeoPoint } from 'firebase/firestore'
@@ -14,6 +16,7 @@ function RightStack(props){
     const currentUser = useAuth()
     
     const [showError,setshowError] = useState(false)
+    const [open, setOpen] = useState(false)
 
     function checkHost(name){
         if(name === ""){
@@ -27,6 +30,7 @@ function RightStack(props){
     const createEvent = async () => {
         if(props.checkValid() === ""){
             const newPoint = new GeoPoint(props.location.lat,props.location.lng)
+            setOpen(true)
             await addDoc(pinDataCollectionRef, {
                 date: Timestamp.fromDate(props.time),
                 img: props.imgURL,
@@ -45,6 +49,7 @@ function RightStack(props){
         }
     }
 
+
     return(
         <Stack sx={{margin:"2rem",width:"90%"}}>
             <TextField
@@ -54,7 +59,7 @@ function RightStack(props){
                 rows={4}
                 margin="normal"
                 helperText="Theme, DJ, Fee, etc.(max 225 characters)"
-                onChange={event=>[props.setNewMore(event.target.value), props.updateSubmit()]}
+                onChange={event=>props.setNewMore(event.target.value)}
                 inputProps={{ maxLength: 225 }}
             />
             <TextField
@@ -70,11 +75,18 @@ function RightStack(props){
                 component="span" 
                 sx={{margin: "2vh",fontSize:"larger"}}
                 onClick={()=>createEvent()}
-                onMouseOver={()=>props.updateSubmit()}
             >
                 Submit
             </Button>
-            {showError?<p style={{color:"red"}}>{props.errorNow}</p>:""}
+            {showError?<p style={{color:"red"}}>{props.checkValid()}</p>:""}
+            <NavLink exact to="/">
+                <Backdrop
+                    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                    open={open}
+                >
+                    <h1 style={{color:"lightGreen"}}>Success! Click to be redirected to Home page.</h1>
+                </Backdrop>
+            </NavLink>
         </Stack>
     )
 }
