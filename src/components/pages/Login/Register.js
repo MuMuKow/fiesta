@@ -17,6 +17,7 @@ let passConRef;
 function Register() {
     
     const [user,setUser] = useState()
+    const [goodFill, setGoodFill] = useState(false)
 
     emailRef = useRef();
     passwordRef = useRef();
@@ -24,7 +25,7 @@ function Register() {
 
     async function handleSignup() {
         try {
-            if(passConRef.current.value == passwordRef.current.value){
+            if(passConRef.current.value === passwordRef.current.value){
                 setUser(await signup(emailRef.current.value,passwordRef.current.value))
                 console.log(user)
             }

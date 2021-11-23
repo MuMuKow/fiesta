@@ -1,7 +1,6 @@
 import React from "react"
 import "./Event.css"
 
-import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from "@mui/material";
 

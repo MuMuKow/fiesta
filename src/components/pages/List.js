@@ -22,6 +22,7 @@ function List() {
         rateup={tile.rateup}
         ratedown={tile.ratedown}
         address={tile.address}
+        userid={tile.userid}
         date={dayFormat(tile.date.toDate())}
     />)
     return (

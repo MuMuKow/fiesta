@@ -10,6 +10,9 @@ import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DownIcon from '@mui/icons-material/KeyboardArrowDown';
 import IconButton from '@mui/material/IconButton';
 
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditIcon from '@mui/icons-material/Edit';
+
 function Tile(props) {
 
     const currentUser = useAuth()
@@ -17,6 +20,7 @@ function Tile(props) {
     const [upVote,setUpVote] = useState(false)
     const [downVote,setDownVote] = useState(false)
     const [newRating,updateRating] = useState(props.rating)
+    const [owner,setOwner] = useState(true)
 
     const removeElement = (array, item) => {
         let index = array.indexOf(item);
@@ -26,11 +30,12 @@ function Tile(props) {
         }
         return array
     }
+    let pass
 
     const updateVote = (offset) => {
         if(currentUser){
             const userDoc = doc(db, "pinData", props.id)
-            if(offset == 1 && !upVote){
+            if(offset === 1 && !upVote){
                 const upArray = props.rateup
                 upArray.push(currentUser.uid)
                 setUpVote(true)
@@ -43,7 +48,7 @@ function Tile(props) {
                     updateDoc(userDoc, {rating: props.rating + 2, rateup: upArray, ratedown: removeElement(props.ratedown,currentUser.uid)})
                 }
             }
-            else if(offset == -1 && !downVote){
+            else if(offset === -1 && !downVote){
                 const downArray = props.ratedown
                 downArray.push(currentUser.uid)
                 setDownVote(false)
@@ -57,12 +62,12 @@ function Tile(props) {
                 }
             }
             else{
-                if(offset == 1){
+                if(offset === 1){
                     updateRating(props.rating-1)
                     setUpVote(false)
                     updateDoc(userDoc, {rating: props.rating - 1, rateup: removeElement(props.rateup,currentUser.uid)})
                 }
-                else if(offset == -1){
+                else if(offset === -1){
                     updateRating(props.rating+1)
                     setDownVote(false)
                     updateDoc(userDoc, {rating: props.rating + 1, ratedown: removeElement(props.ratedown,currentUser.uid)})
@@ -77,7 +82,8 @@ function Tile(props) {
     useEffect( () => {
         setUpVote(currentUser ? props.rateup.includes(currentUser.uid) : false)
         setDownVote(currentUser ? props.ratedown.includes(currentUser.uid) : false)
-    })
+        setOwner(currentUser?.uid === props.userid)
+    },[currentUser, props.rateup, props.ratedown, props.userid])
 
     return (
         <div className="one-tile">
@@ -95,19 +101,35 @@ function Tile(props) {
                 <h3 className="tile-user">{props.user}</h3>
             </div>
             <Stack sx={{justifyContent:"center",alignItems:"center",width:"10%"}} spacing={2}>
-                {currentUser ? <IconButton onClick={() => {updateVote(1)}}>
-                    {!upVote?
-                    <UpIcon sx={{color:"green", fontSize: 40, borderRadius:"50px"}}/>:
-                    <UpIcon sx={{color:"green", fontSize: 40, backgroundColor:"lightGray", borderRadius:"50px"}}/>
-                    }
-                </IconButton>:""}
+                {owner ? 
+                    <IconButton onClick={() => pass}>
+                        <EditIcon sx={{color:"gray", fontSize: 40, borderRadius:"50px"}}/>
+                    </IconButton>
+                :
+                    (currentUser ? 
+                        <IconButton onClick={() => {updateVote(1)}}>
+                            {!upVote?
+                                <UpIcon sx={{color:"green", fontSize: 40, borderRadius:"50px"}}/>:
+                                <UpIcon sx={{color:"green", fontSize: 40, backgroundColor:"lightGray", borderRadius:"50px"}}/>
+                            }
+                        </IconButton>:""
+                    )
+                }
                 <h2 className="tile-rating">{newRating}</h2>
-                {currentUser ? <IconButton onClick={() => {updateVote(-1)}}>
-                    {!downVote?
-                    <DownIcon sx={{color:"red", fontSize: 40, borderRadius:"50px"}}/>:
-                    <DownIcon sx={{color:"red", fontSize: 40, backgroundColor:"lightGray", borderRadius:"50px"}}/>
-                    }
-                </IconButton>:""}
+                {owner ? 
+                    <IconButton onClick={() => pass}>
+                        <DeleteForeverIcon sx={{color:"black", fontSize: 40, borderRadius:"50px"}}/>
+                    </IconButton>
+                :
+                    (currentUser ? 
+                        <IconButton onClick={() => {updateVote(-1)}}>
+                            {!downVote?
+                                <DownIcon sx={{color:"red", fontSize: 40, borderRadius:"50px"}}/>:
+                                <DownIcon sx={{color:"red", fontSize: 40, backgroundColor:"lightGray", borderRadius:"50px"}}/>
+                            }
+                        </IconButton>:""
+                    )
+                }
             </Stack>
         </div>
     )
